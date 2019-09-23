@@ -8,22 +8,22 @@ map = []
 animals = []
 
 '''load sprites'''
-screen_img = pygame.image.load("farm_game/Sprites/Wasteland_bg.png")
-start_screen_img = pygame.image.load("farm_game/Sprites/start_Wasteland_bg.png")
-default_ug_img = pygame.image.load("farm_game/Sprites/default_ug_bg.png")
-start_default_ug_img = pygame.image.load("farm_game/Sprites/start_default_ug_bg.png")
-player_left_img = pygame.image.load("farm_game/Sprites/Bratan_left.png")
-player_right_img = pygame.image.load("farm_game/Sprites/Bratan_right.png")
-player_left_shrink_img = pygame.image.load("farm_game/Sprites/Bratan_left_shrink.png")
-player_right_shrink_img = pygame.image.load("farm_game/Sprites/Bratan_right_shrink.png")
-bolt_left_img = pygame.image.load("farm_game/Sprites/Bolt_left.png")
-bolt_right_img = pygame.image.load("farm_game/Sprites/Bolt_right.png")
-bolt_left_shrink_img = pygame.image.load("farm_game/Sprites/Bolt_left_shrink.png")
-bolt_right_shrink_img = pygame.image.load("farm_game/Sprites/Bolt_right_shrink.png")
-platypus_left_img = pygame.image.load("farm_game/Sprites/Platypus_left.png")
-platypus_right_img = pygame.image.load("farm_game/Sprites/Platypus_right.png")
-cow_left_img = pygame.image.load("farm_game/Sprites/Cow_left.png")
-cow_right_img = pygame.image.load("farm_game/Sprites/Cow_right.png")
+screen_img = pygame.image.load("Sprites/Wasteland_bg.png")
+start_screen_img = pygame.image.load("Sprites/start_Wasteland_bg.png")
+default_ug_img = pygame.image.load("Sprites/default_ug_bg.png")
+start_default_ug_img = pygame.image.load("Sprites/start_default_ug_bg.png")
+player_left_img = pygame.image.load("Sprites/Bratan_left.png")
+player_right_img = pygame.image.load("Sprites/Bratan_right.png")
+player_left_shrink_img = pygame.image.load("Sprites/Bratan_left_shrink.png")
+player_right_shrink_img = pygame.image.load("Sprites/Bratan_right_shrink.png")
+bolt_left_img = pygame.image.load("Sprites/Bolt_left.png")
+bolt_right_img = pygame.image.load("Sprites/Bolt_right.png")
+bolt_left_shrink_img = pygame.image.load("Sprites/Bolt_left_shrink.png")
+bolt_right_shrink_img = pygame.image.load("Sprites/Bolt_right_shrink.png")
+platypus_left_img = pygame.image.load("Sprites/Platypus_left.png")
+platypus_right_img = pygame.image.load("Sprites/Platypus_right.png")
+cow_left_img = pygame.image.load("Sprites/Cow_left.png")
+cow_right_img = pygame.image.load("Sprites/Cow_right.png")
 
 
 class Window:
