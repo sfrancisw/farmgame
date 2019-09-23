@@ -487,8 +487,8 @@ class Platypus(Animal):
         if self.react and 950 * (left_world_size / 2) - 50 <= self.x <= 950 * (right_world_size / 2) - 50 - self.width:
             if self.x <= bratan.x:
                 self.facing = "left"
-                if self.x > (self.current_x - self.path * 5) - self.vel:    #moving left until distance travelled
-                    self.x -= self.vel * 3.5
+                if self.x > (self.current_x - self.path * 8) - self.vel:    #moving left until distance travelled
+                    self.x -= self.vel * 4
                     self.hitbox[0] = self.x
 
                 else:
@@ -498,8 +498,8 @@ class Platypus(Animal):
 
             if self.x >= bratan.x:
                 self.facing = "right"
-                if self.x < (self.current_x + self.path * 5) + self.vel:    #moving right until distance travelled
-                    self.x += self.vel * 3.5
+                if self.x < (self.current_x + self.path * 8) + self.vel:    #moving right until distance travelled
+                    self.x += self.vel * 4
                     self.hitbox[0] = self.x
 
                 else:
