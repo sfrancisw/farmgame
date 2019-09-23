@@ -39,7 +39,8 @@ class Window:
     '''draw background'''
     def draw(self):
         for tile in map:
-            self.screen.blit(tile.image, (tile.x - bratan.camera_x, tile.y - bratan.camera_y))
+            if bratan.x - 2000 <= tile.x <= bratan.x + 3000:
+                self.screen.blit(tile.image, (tile.x - bratan.camera_x, tile.y - bratan.camera_y))
 
 
 class World(Window):
@@ -375,7 +376,7 @@ class Animal:
     def __init__(self, width, height):
         self.width = width
         self.height = height
-        self.x = random.randint(0, (game.width-self.width))   #spawn animal at random x coordinate
+        self.x = random.randint(bratan.x - 2000, bratan.x + 3000)   #spawn animal at random x coordinate
         self.y = game.ground-self.height    #align sprite to ground
         self.current_x = self.x
         self.hitbox = [self.x, self.y, self.width, self.height]
