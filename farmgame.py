@@ -4,6 +4,8 @@ import pygame, random, time
 pygame.init()
 clock = pygame.time.Clock()
 show_hitbox = True
+left_world_size = -10
+right_world_size = 12
 map = []
 animals = []
 
@@ -38,11 +40,6 @@ class Window:
     def draw(self):
         for tile in map:
             self.screen.blit(tile.image, (tile.x - bratan.camera_x, tile.y - bratan.camera_y))
-
-        #self.screen.blit(start_screen_img, (0 - bratan.camera_x, 0 - bratan.camera_y))
-        #self.screen.blit(screen_img, (950 - bratan.camera_x, 0 - bratan.camera_y))
-        #self.screen.blit(screen_img, (-950 - bratan.camera_x, 0 - bratan.camera_y))
-        #self.screen.blit(start_default_ug_img, (0 - bratan.camera_x, 950 - bratan.camera_y))
 
 
 class World(Window):
@@ -82,15 +79,10 @@ class World(Window):
         self.values = (950 * self.place_x, 950 * self.place_y, self.place_img)
 
     def create(self):
-        for i in range(-10, 10):
-            print(i)
+        for i in range(left_world_size, right_world_size):
             self.set_position(self, i)
             map.append(self(self.values[0], self.values[1], self.values[2]))
-
-        #map.append(self(950 * 0, 950 * 0, start_screen_img))
-        #map.append(self(950 * 1, 950 * 0, screen_img))
-        #map.append(self(950 * -1, 950 * 0, screen_img))
-        #map.append(self(950 * 0, 950 * 1, start_default_ug_img))
+            print(self.values)
 
 
 class Player:
@@ -129,7 +121,7 @@ class Player:
         key = pygame.key.get_pressed()
 
         if self.camera_y == 0 or self.camera_y == game.height:
-            if key[pygame.K_d] and self.x <= 1875 - self.width:
+            if key[pygame.K_d] and self.x <= 950 * (right_world_size / 2) - 50 - self.width:
                 self.facing = "right"
                 bolt.facing = "right"
                 self.x += self.vel
@@ -142,7 +134,7 @@ class Player:
                 self.camera_x += self.vel
 
         if self.camera_y == 0 or self.camera_y == game.height:
-            if key[pygame.K_a] and  self.x >= -925:
+            if key[pygame.K_a] and  self.x >= 950 * (left_world_size / 2) - 50:
                 self.facing = "left"
                 bolt.facing = "left"
                 self.x -= self.vel
@@ -413,11 +405,11 @@ class Animal:
     def move(self):
 
         '''moving right when on left border of screen'''
-        if self.x <= -925:
+        if self.x <= 950 * (left_world_size / 2) - 50:
             self.direction = 0
 
         '''moving left when on righr border of screen'''
-        if self.x >= 1875 - self.width:
+        if self.x >= 950 * (right_world_size / 2) - 50 - self.width:
             self.direction = 1
 
         if self.react == False:
@@ -492,7 +484,7 @@ class Platypus(Animal):
         self.right_img = platypus_right_img
 
     def hit_reaction(self):
-        if self.react and -900 <= self.x <= 1850 - self.width:
+        if self.react and 950 * (left_world_size / 2) - 50 <= self.x <= 950 * (right_world_size / 2) - 50 - self.width:
             if self.x <= bratan.x:
                 self.facing = "left"
                 if self.x > (self.current_x - self.path * 5) - self.vel:    #moving left until distance travelled
@@ -626,6 +618,9 @@ while True:
     '''check events'''
     for event in pygame.event.get():
         if event.type == pygame.KEYUP:
+            '''debug key'''
+            if event.key == pygame.K_y:
+                print(bratan.x)
             '''sneaking'''
             if event.key == pygame.K_e:
                 bratan.shrink()
