@@ -7,6 +7,7 @@ show_hitbox = True
 left_world_size = -10
 right_world_size = 12
 map = []
+buildings = []
 animals = []
 
 '''load sprites'''
@@ -84,6 +85,25 @@ class World(Window):
             self.set_position(self, i)
             map.append(self(self.values[0], self.values[1], self.values[2]))
             print(self.values)
+
+
+class Building:
+
+    def __init__(self):
+        buildings.append(self)
+
+    def draw(self):
+        pygame.draw.rect(game.screen, (0,0,0), (self.x - bratan.camera_x, self.y - bratan.camera_y, self.width, self.height))
+
+
+class Smithy(Building):
+
+    def __init__(self):
+        super().__init__()
+        self.width = 200
+        self.height = 150
+        self.x = 500
+        self.y = game.ground - self.height
 
 
 class Player:
@@ -606,6 +626,8 @@ World.create(World)
 '''display all sprites'''
 def redrawScreen():
     game.draw()
+    for building in buildings:
+        building.draw()
     for animal in animals:
         animal.draw(bratan)
     bratan.draw()
@@ -621,7 +643,7 @@ while True:
         if event.type == pygame.KEYUP:
             '''debug key'''
             if event.key == pygame.K_y:
-                print(bratan.x)
+                Smithy()
             '''sneaking'''
             if event.key == pygame.K_e:
                 bratan.shrink()
