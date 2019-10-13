@@ -2,6 +2,7 @@
 import pygame, random, time
 
 pygame.init()
+myfont = pygame.font.SysFont(None, 50)
 clock = pygame.time.Clock()
 show_hitbox = True
 left_world_size = -10
@@ -90,6 +91,7 @@ class World(Window):
 class Building:
 
     def __init__(self):
+        self.show_text = False
         buildings.append(self)
 
     def draw(self):
@@ -105,6 +107,11 @@ class Smithy(Building):
         self.x = 500
         self.y = game.ground - self.height
 
+        self.text1 = myfont.render('Hello world', 1, (255, 255, 255), (0,0,0))
+
+
+    def drawText(self):
+        game.screen.blit(self.text1, (200,200))
 
 class Player:
 
@@ -628,8 +635,13 @@ def redrawScreen():
     game.draw()
     for building in buildings:
         building.draw()
+
+        if building.show_text == True:
+            building.drawText()
+
     for animal in animals:
         animal.draw(bratan)
+
     bratan.draw()
     bolt.draw()
     pygame.display.flip()
@@ -644,6 +656,7 @@ while True:
             '''debug key'''
             if event.key == pygame.K_y:
                 Smithy()
+
             '''sneaking'''
             if event.key == pygame.K_e:
                 bratan.shrink()
