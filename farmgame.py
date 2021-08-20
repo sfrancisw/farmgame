@@ -4,7 +4,7 @@ import pygame, random, time
 pygame.init()
 myfont = pygame.font.SysFont(None, 50)
 clock = pygame.time.Clock()
-show_hitbox = True
+show_hitbox = False
 left_world_size = -10
 right_world_size = 12
 map = []
@@ -589,7 +589,7 @@ class Cow(Animal):
 '''define all entities'''
 game = Window()
 bratan = Player(450, 625, 25, 75, 3)
-crossbow = Bow(350, 100)
+crossbow = Bow(350, 10)
 bolt = Arrow(15)
 
 species = [Platypus, Cow]
